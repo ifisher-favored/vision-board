@@ -1,17 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, {Component} from 'react';
+//import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client'
+import Main from './component/Main';
+import './styles/stylesheet.css';
+import {BrowserRouter} from 'react-router-dom';
+import {createStore} from 'redux';
+import rootReducer from './redux/reducer';
+import {Provider} from 'react-redux'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const store = createStore(rootReducer)
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
+
+
+
+
+
+//React.createElement
+// ('ol', null, tasks.map((task, index) => React.createElement('li', {key: index}, task))
+// );
+
+//ReactDOM.render(<Provider store={store}><BrowserRouter><Main/></BrowserRouter></Provider>, document.getElementById('root'));
+createRoot(document.getElementById('root')).render(<Provider store={store}><BrowserRouter><Main/></BrowserRouter></Provider>);
+
+
